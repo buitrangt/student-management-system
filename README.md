@@ -151,3 +151,17 @@ Hệ thống cơ sở dữ liệu này được thiết kế để quản lý th
     "class_name": "string",
     "department_id": "integer"
   }
+
+  #### Xóa Lớp
+
+- **URL**: `/api/v1/classes/{id}`
+- **Method**: `DELETE`
+- **Response**:
+  - **Status**: `204 No Content`
+  - **Body**:
+
+    | Trường       | Kiểu dữ liệu             | Mô tả                                     |
+    |--------------|--------------------------|-------------------------------------------|
+    | code         | "SUCCESS"                | Mã phản hồi                               |
+    | timestamp    | long                     | Thời gian phản hồi                        |
+
