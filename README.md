@@ -85,3 +85,161 @@ Hệ thống cơ sở dữ liệu này được thiết kế để quản lý th
 | subject_id            | INT                             | Khóa ngoại tham chiếu đến môn học         |
 | lecturer_id           | INT                             | Khóa ngoại tham chiếu đến giảng viên      |
 | **Khóa chính**        | **subject_id**, **lecturer_id** | Sự kết hợp của subject_id và lecturer_id  |
+
+
+
+# Hệ thống quản lý sinh viên API
+
+## Tài liệu API
+
+### ClassController
+
+Controller để quản lý các thao tác CRUD liên quan đến thực thể lớp học.
+
+#### Tạo Lớp
+
+- **URL**: `/api/v1/classes`
+- **Method**: `POST`
+- **Request Body**: 
+  ```json
+  {
+    "class_name": "string",
+    "department_id": "integer"
+  }
+Response:
+
+Status: 201 Created
+
+Body:
+
+json
+
+
+{
+  "code": "SUCCESS",
+  "timestamp": "long",
+  "data": {
+    "class_id": "integer",
+    "class_name": "string",
+    "department_id": "integer"
+  }
+}
+Lấy Danh Sách Tất Cả Các Lớp
+URL: /api/v1/classes
+
+Method: GET
+
+Response:
+
+Status: 200 OK
+
+Body:
+
+json
+
+{
+  "code": "SUCCESS",
+  "timestamp": "long",
+  "data": [
+    {
+      "class_id": "integer",
+      "class_name": "string",
+      "department_id": "integer"
+    }
+  ]
+}
+Lấy Lớp Theo ID
+URL: /api/v1/classes/{id}
+
+Method: GET
+
+Response:
+
+Status: 200 OK
+
+Body:
+
+json
+
+{
+  "code": "SUCCESS",
+  "timestamp": "long",
+  "data": {
+    "class_id": "integer",
+    "class_name": "string",
+    "department_id": "integer"
+  }
+}
+Cập Nhật Lớp
+URL: /api/v1/classes/{id}
+
+Method: PUT
+
+Request Body:
+
+json
+
+{
+  "class_name": "string",
+  "department_id": "integer"
+}
+Response:
+
+Status: 200 OK
+
+Body:
+
+json
+
+{
+  "code": "SUCCESS",
+  "timestamp": "long",
+  "data": {
+    "class_id": "integer",
+    "class_name": "string",
+    "department_id": "integer"
+  }
+}
+Xóa Lớp
+URL: /api/v1/classes/{id}
+
+Method: DELETE
+
+Response:
+
+Status: 204 No Content
+
+Body:
+
+json
+
+{
+  "code": "SUCCESS",
+  "timestamp": "long"
+}
+Tìm Kiếm Lớp Theo Tên
+URL: /api/v1/classes/search
+
+Method: GET
+
+Query Parameter: className
+
+Response:
+
+Status: 200 OK
+
+Body:
+
+json
+
+{
+  "code": "SUCCESS",
+  "timestamp": "long",
+  "data": [
+    {
+      "class_id": "integer",
+      "class_name": "string",
+      "department_id": "integer"
+    }
+  ]
+}
