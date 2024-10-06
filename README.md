@@ -151,8 +151,8 @@ Hệ thống cơ sở dữ liệu này được thiết kế để quản lý th
     "class_name": "string",
     "department_id": "integer"
   }
-
-  #### Xóa Lớp
+  
+#### Xóa Lớp
 
 - **URL**: `/api/v1/classes/{id}`
 - **Method**: `DELETE`
