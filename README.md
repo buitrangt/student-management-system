@@ -90,156 +90,64 @@ Hệ thống cơ sở dữ liệu này được thiết kế để quản lý th
 
 # Hệ thống quản lý sinh viên API
 
-## Tài liệu API
-
-### ClassController
-
-Controller để quản lý các thao tác CRUD liên quan đến thực thể lớp học.
-
 #### Tạo Lớp
 
 - **URL**: `/api/v1/classes`
 - **Method**: `POST`
-- **Request Body**: 
+- **Response**:
+  - **Status**: `201 Created`
+  - **Body**:
+
+    | Trường       | Kiểu dữ liệu             | Mô tả                                     |
+    |--------------|--------------------------|-------------------------------------------|
+    | code         | "SUCCESS"                | Mã phản hồi                               |
+    | timestamp    | long                     | Thời gian phản hồi                        |
+    | data         |                          | Thông tin về lớp học                      |
+    | class_id     | integer                  | Mã định danh duy nhất cho mỗi lớp học     |
+    | class_name   | string                   | Tên lớp học                               |
+    | department_id| integer                  | Mã khoa của lớp học                       |
+
+#### Lấy Danh Sách Tất Cả Các Lớp
+
+- **URL**: `/api/v1/classes`
+- **Method**: `GET`
+- **Response**:
+  - **Status**: `200 OK`
+  - **Body**:
+
+    | Trường       | Kiểu dữ liệu             | Mô tả                                     |
+    |--------------|--------------------------|-------------------------------------------|
+    | code         | "SUCCESS"                | Mã phản hồi                               |
+    | timestamp    | long                     | Thời gian phản hồi                        |
+    | data         |                          | Danh sách các lớp học                     |
+    | class_id     | integer                  | Mã định danh duy nhất cho mỗi lớp học     |
+    | class_name   | string                   | Tên lớp học                               |
+    | department_id| integer                  | Mã khoa của lớp học                       |
+
+#### Lấy Lớp Theo ID
+
+- **URL**: `/api/v1/classes/{id}`
+- **Method**: `GET`
+- **Response**:
+  - **Status**: `200 OK`
+  - **Body**:
+
+    | Trường       | Kiểu dữ liệu             | Mô tả                                     |
+    |--------------|--------------------------|-------------------------------------------|
+    | code         | "SUCCESS"                | Mã phản hồi                               |
+    | timestamp    | long                     | Thời gian phản hồi                        |
+    | data         |                          | Thông tin về lớp học                      |
+    | class_id     | integer                  | Mã định danh duy nhất cho mỗi lớp học     |
+    | class_name   | string                   | Tên lớp học                               |
+    | department_id| integer                  | Mã khoa của lớp học                       |
+
+#### Cập Nhật Lớp
+
+- **URL**: `/api/v1/classes/{id}`
+- **Method**: `PUT`
+- **Request Body**:
   ```json
   {
     "class_name": "string",
     "department_id": "integer"
   }
-Response:
-
-Status: 201 Created
-
-Body:
-
-json
-
-
-{
-  "code": "SUCCESS",
-  "timestamp": "long",
-  "data": {
-    "class_id": "integer",
-    "class_name": "string",
-    "department_id": "integer"
-  }
-}
-Lấy Danh Sách Tất Cả Các Lớp
-URL: /api/v1/classes
-
-Method: GET
-
-Response:
-
-Status: 200 OK
-
-Body:
-
-json
-
-{
-  "code": "SUCCESS",
-  "timestamp": "long",
-  "data": [
-    {
-      "class_id": "integer",
-      "class_name": "string",
-      "department_id": "integer"
-    }
-  ]
-}
-Lấy Lớp Theo ID
-URL: /api/v1/classes/{id}
-
-Method: GET
-
-Response:
-
-Status: 200 OK
-
-Body:
-
-json
-
-{
-  "code": "SUCCESS",
-  "timestamp": "long",
-  "data": {
-    "class_id": "integer",
-    "class_name": "string",
-    "department_id": "integer"
-  }
-}
-Cập Nhật Lớp
-URL: /api/v1/classes/{id}
-
-Method: PUT
-
-Request Body:
-
-json
-
-{
-  "class_name": "string",
-  "department_id": "integer"
-}
-Response:
-
-Status: 200 OK
-
-Body:
-
-json
-
-{
-  "code": "SUCCESS",
-  "timestamp": "long",
-  "data": {
-    "class_id": "integer",
-    "class_name": "string",
-    "department_id": "integer"
-  }
-}
-Xóa Lớp
-URL: /api/v1/classes/{id}
-
-Method: DELETE
-
-Response:
-
-Status: 204 No Content
-
-Body:
-
-json
-
-{
-  "code": "SUCCESS",
-  "timestamp": "long"
-}
-Tìm Kiếm Lớp Theo Tên
-URL: /api/v1/classes/search
-
-Method: GET
-
-Query Parameter: className
-
-Response:
-
-Status: 200 OK
-
-Body:
-
-json
-
-{
-  "code": "SUCCESS",
-  "timestamp": "long",
-  "data": [
-    {
-      "class_id": "integer",
-      "class_name": "string",
-      "department_id": "integer"
-    }
-  ]
-}
